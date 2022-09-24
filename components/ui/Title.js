@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
         color: Colors.white,
         borderColor : Colors.white,
         borderWidth :2,
-        padding: 12
+        padding: 12,
+        minWidth : "80%",
+        width : 300
     }
 })
 export default Title

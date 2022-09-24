@@ -1,4 +1,4 @@
-import { View ,TextInput, StyleSheet, Alert} from "react-native";
+import { View ,TextInput, StyleSheet, Alert ,KeyboardAvoidingView,useWindowDimensions,ScrollView} from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 import {useState} from "react"
@@ -8,6 +8,7 @@ import InstructionText from "../components/ui/InstructionText";
 
 function StartGameScreen ({onConfirmNumber}) {
     const [entredNumber , setEntredNumber] =useState("")
+    const {width,height} =useWindowDimensions
     function numberIputHandler(entredText){
         setEntredNumber(entredText)
     }
@@ -26,8 +27,13 @@ function StartGameScreen ({onConfirmNumber}) {
         }
         onConfirmNumber(chosenNumber)
     }
+
+
+    const marginTopDistance = height < 380 ? 30 : 100
     return (
-        <View style={styles.rootContainer} >
+        <ScrollView style={styles.screen}>
+        <KeyboardAvoidingView style={styles.screen} behavior="position">
+        <View style={[styles.rootContainer , {marginTop :marginTopDistance}]} >
         <Title>Guess My Number</Title>
         <Card >
             <InstructionText>Enter Number</InstructionText>
@@ -45,14 +51,19 @@ function StartGameScreen ({onConfirmNumber}) {
             </View>
         </Card>
         </View>
+        </KeyboardAvoidingView>
+        </ScrollView>
     );
 }
-
-
+// dimention api exute only once moving code to component function use useWindowDimensions
+// const deviceHeight = Dimensions.get("window").height
 const styles =StyleSheet.create({
+screen:{
+        flex : 1
+    },
 rootContainer :{
     flex :1,
-    marginTop :100,
+    // marginTop :deviceHeight < 380 ? 30 : 100,
     alignItems : "center"
     },
 numberInput :{
