@@ -8,7 +8,7 @@ import InstructionText from "../components/ui/InstructionText";
 
 function StartGameScreen ({onConfirmNumber}) {
     const [entredNumber , setEntredNumber] =useState("")
-    const {width,height} =useWindowDimensions
+    const {width,height} =useWindowDimensions()
     function numberIputHandler(entredText){
         setEntredNumber(entredText)
     }

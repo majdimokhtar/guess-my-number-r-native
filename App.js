@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Colors from './constants/colors';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import {StatusBar} from "expo-status-bar"
 
 export default function App() {
   const [userNumber ,setUserNumber] =useState()
@@ -50,6 +51,8 @@ export default function App() {
 
 
   return (
+    <>
+    <StatusBar style='light'/>
     <LinearGradient colors={[Colors.primary800, Colors.primary600]} style={styles.AppContainer}>
       <ImageBackground 
       source={require("./assets/background.jpg")} 
@@ -60,6 +63,7 @@ export default function App() {
         <SafeAreaView style={styles.AppContainer}>{screen}</SafeAreaView>
     </ImageBackground>
     </LinearGradient>
+    </>
   );
 }
 
